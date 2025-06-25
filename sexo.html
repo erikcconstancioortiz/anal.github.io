@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tesLife - Inicio de Sesión y Registro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #4CAF50, #81C784);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-side, .right-side {
+            padding: 30px;
+            width: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input {
+            width: 90%;
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input:focus {
+            border-color: #4CAF50;
+        }
+
+        .button {
+            width: 90%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #388E3C;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .switch-section {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .switch-section a {
+            color: #4CAF50;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .switch-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animación de transición */
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-side, .right-side {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .input {
+                width: 100%;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container fade-in">
+        <!-- Sección de Inicio de Sesión -->
+        <div class="left-side">
+            <h1 class="logo">tesLife</h1>
+            <h2 class="title">Bienvenido a tesLife</h2>
+            <div class="form-container">
+                <input type="email" class="input" placeholder="Correo electrónico" required>
+                <input type="password" class="input" placeholder="Contraseña" required>
+                <button class="button">Iniciar sesión</button>
+            </div>
+            <div class="link">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+            <div class="switch-section">
+                <span>¿No tienes una cuenta?</span> <a href="#registro">Regístrate aquí</a>
+            </div>
+        </div>
+
+        <!-- Sección de Registro -->
+        <div class="right-side" id="registro" style="display:none;">
+            <h1 class="logo">tesLife</h1>
+            <h2 class="title">Crea una cuenta</h2>
+            <div class="form-container">
+                <input type="text" class="input" placeholder="Nombre completo" required>
+                <input type="email" class="input" placeholder="Correo electrónico" required>
+                <input type="password" class="input" placeholder="Contraseña" required>
+                <button class="button">Registrarse</button>
+            </div>
+            <div class="switch-section">
+                <span>¿Ya tienes una cuenta?</span> <a href="#">Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cambiar entre las secciones de login y registro
+        const switchToLogin = () => {
+            document.querySelector('.left-side').style.display = 'block';
+            document.querySelector('.right-side').style.display = 'none';
+        };
+
+        const switchToRegister = () => {
+            document.querySelector('.left-side').style.display = 'none';
+            document.querySelector('.right-side').style.display = 'block';
+        };
+
+        document.querySelector('.switch-section a').addEventListener('click', switchToRegister);
+        document.querySelector('.right-side .switch-section a').addEventListener('click', switchToLogin);
+    </script>
+
+</body>
+</html>

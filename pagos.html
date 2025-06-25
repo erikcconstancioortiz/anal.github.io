@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>tesLife - Pago</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e8f5e9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fondoAnimado 15s infinite;
+    }
+
+    @keyframes fondoAnimado {
+      0%   { background-color: #e8f5e9; }
+      33%  { background-color: #dcdcdc; }
+      66%  { background-color: #ffffff; }
+      100% { background-color: #e8f5e9; }
+    }
+
+    .formulario {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(20px);
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 480px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .formulario h2 {
+      text-align: center;
+      color: #1b5e20;
+      margin-bottom: 25px;
+    }
+
+    .grupo {
+      margin-bottom: 18px;
+    }
+
+    .grupo label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .instruccion {
+      font-size: 0.75em;
+      color: #666;
+      margin-top: 3px;
+      margin-left: 2px;
+    }
+
+    .grupo input,
+    .grupo select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #a5d6a7;
+      background-color: rgba(255,255,255,0.85);
+      font-size: 1em;
+    }
+
+    .grupo input:focus,
+    .grupo select:focus {
+      outline: none;
+      border-color: #4caf50;
+      box-shadow: 0 0 10px rgba(76,175,80,0.3);
+    }
+
+    .btn {
+      width: 100%;
+      background-color: #1b5e20;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #388e3c;
+    }
+
+    .mensaje {
+      text-align: center;
+      font-size: 0.85em;
+      color: #555;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="formulario" onsubmit="realizarPago(event)">
+    <h2>💳 Pago en línea - tesLife</h2>
+
+    <div class="grupo">
+      <label>👤 Nombre completo</label>
+      <input type="text" required>
+      <div class="instruccion">Tal como aparece en tu identificación oficial.</div>
+    </div>
+
+    <div class="grupo">
+      <label>📧 Correo electrónico</label>
+      <input type="email" required>
+      <div class="instruccion">Usa tu correo institucional si lo tienes.</div>
+    </div>
+
+    <div class="grupo">
+      <label>💳 Número de tarjeta</label>
+      <input type="text" maxlength="16" required>
+      <div class="instruccion">16 dígitos sin espacios.</div>
+    </div>
+
+    <div class="grupo">
+      <label>📅 Expiración</label>
+      <input type="month" required>
+      <div class="instruccion">Mes y año de vencimiento.</div>
+    </div>
+
+    <div class="grupo">
+      <label>🔐 CVV</label>
+      <input type="text" maxlength="4" required>
+      <div class="instruccion">3 o 4 dígitos al reverso.</div>
+    </div>
+
+    <div class="grupo">
+      <label>📑 Concepto de pago</label>
+      <select required>
+        <option value="">Selecciona uno</option>
+        <option>📘 Inscripción</option>
+        <option>💼 Colegiatura</option>
+        <option>📄 Certificado</option>
+        <option>🧾 Otro</option>
+      </select>
+      <div class="instruccion">Selecciona el motivo del pago.</div>
+    </div>
+
+    <button type="submit" class="btn">💸 Realizar pago</button>
+    <p class="mensaje">🔒 Transacción segura. No compartimos tus datos.</p>
+  </form>
+
+<script>
+  function realizarPago(e) {
+    e.preventDefault();
+    alert("✅ ¡Pago realizado con éxito!");
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Foro Académico - tesLife</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e5e5e5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1b4332;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .formulario {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #2d6a4f;
+      color: white;
+      cursor: pointer;
+    }
+    .comentario {
+      background-color: #f8f9fa;
+      border-left: 5px solid #40916c;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .comentario .acciones {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .comentario .acciones button {
+      margin-left: 5px;
+      background-color: #adb5bd;
+      color: #212529;
+      padding: 3px 6px;
+      font-size: 12px;
+    }
+    .busqueda {
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: #081c15;
+    }
+    .categoria {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>🧠 Foro Académico - tesLife</header>
+  <main>
+    <div class="formulario">
+      <h3>📝 Crear nuevo comentario</h3>
+      <input type="text" id="titulo" placeholder="Título del comentario (Ej. ¿Cómo inscribirme a tutorías?)">
+      <textarea id="contenido" placeholder="Escribe tu comentario..."></textarea>
+      <select id="carrera">
+        <option value="Industrial">⚙️ Ingeniería Industrial</option>
+        <option value="Sistemas">💻 Ingeniería en Sistemas</option>
+        <option value="TICs">🌐 TICs</option>
+        <option value="Gastronomia">🍳 Gastronomía</option>
+        <option value="Otros">📚 Otros</option>
+      </select>
+      <button onclick="publicarComentario()">Publicar</button>
+    </div>
+
+    <div class="busqueda">
+      <input type="text" id="buscador" placeholder="🔍 Buscar tus comentarios..." onkeyup="buscarComentario()">
+    </div>
+
+    <div id="contenedor-comentarios"></div>
+  </main>
+
+  <script>
+    const contenedor = document.getElementById('contenedor-comentarios');
+    let comentarios = [];
+
+    function publicarComentario() {
+      const titulo = document.getElementById('titulo').value.trim();
+      const contenido = document.getElementById('contenido').value.trim();
+      const carrera = document.getElementById('carrera').value;
+
+      if (!titulo || !contenido) return alert("Completa todos los campos.");
+
+      const nuevo = {
+        id: Date.now(),
+        titulo,
+        contenido,
+        carrera
+      };
+
+      comentarios.push(nuevo);
+      mostrarComentarios();
+      limpiarFormulario();
+    }
+
+    function limpiarFormulario() {
+      document.getElementById('titulo').value = '';
+      document.getElementById('contenido').value = '';
+    }
+
+    function mostrarComentarios(filtrados = null) {
+      contenedor.innerHTML = '';
+      const lista = filtrados || comentarios;
+
+      const porCarrera = {
+        'Industrial': [],
+        'Sistemas': [],
+        'TICs': [],
+        'Gastronomia': [],
+        'Otros': []
+      };
+
+      lista.forEach(com => porCarrera[com.carrera].push(com));
+
+      for (const carrera in porCarrera) {
+        if (porCarrera[carrera].length > 0) {
+          const seccion = document.createElement('div');
+          seccion.className = 'categoria';
+          seccion.innerHTML = `<h2>${carrera}</h2>`;
+
+          porCarrera[carrera].forEach(c => {
+            const div = document.createElement('div');
+            div.className = 'comentario';
+            div.innerHTML = `
+              <strong>${c.titulo}</strong><br>
+              <p>${c.contenido}</p>
+              <div class="acciones">
+                <button onclick="editarComentario(${c.id})">✏️ Editar</button>
+                <button onclick="eliminarComentario(${c.id})">🗑️ Eliminar</button>
+              </div>
+            `;
+            seccion.appendChild(div);
+          });
+
+          contenedor.appendChild(seccion);
+        }
+      }
+    }
+
+    function eliminarComentario(id) {
+      comentarios = comentarios.filter(c => c.id !== id);
+      mostrarComentarios();
+    }
+
+    function editarComentario(id) {
+      const comentario = comentarios.find(c => c.id === id);
+      if (comentario) {
+        document.getElementById('titulo').value = comentario.titulo;
+        document.getElementById('contenido').value = comentario.contenido;
+        document.getElementById('carrera').value = comentario.carrera;
+        eliminarComentario(id);
+      }
+    }
+
+    function buscarComentario() {
+      const texto = document.getElementById('buscador').value.toLowerCase();
+      const filtrados = comentarios.filter(c =>
+        c.titulo.toLowerCase().includes(texto) ||
+        c.contenido.toLowerCase().includes(texto)
+      );
+      mostrarComentarios(filtrados);
+    }
+  </script>
+</body>
+</html>

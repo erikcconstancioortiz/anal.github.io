@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horario Universitario</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      animation: fondoCambiante 15s infinite;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    @keyframes fondoCambiante {
+      0% { background-color: #e8f5e9; }
+      33% { background-color: #dcdcdc; }
+      66% { background-color: #ffffff; }
+      100% { background-color: #e8f5e9; }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #1b5e20;
+      font-size: 2.4em;
+    }
+
+    .seccion {
+      margin-bottom: 60px;
+    }
+
+    .subtitulo {
+      font-size: 1.6em;
+      margin: 25px 0;
+      color: #2e7d32;
+      text-align: center;
+      border-bottom: 3px solid #4caf50;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border: 1px solid #ccc;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #1b5e20;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f1f8e9;
+    }
+
+    .hora {
+      color: #424242;
+      font-weight: bold;
+    }
+
+    td span {
+      display: block;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .emoji {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🗓️ Horario Universitario Semestral</h1>
+
+  <!-- INGENIERÍA INDUSTRIAL -->
+  <div class="seccion">
+    <div class="subtitulo">⚙️ Ingeniería Industrial</div>
+    <table>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+      <tr>
+        <td class="hora">8:00 - 9:00</td>
+        <td>📊 Estadística<br><span>Análisis de datos</span></td>
+        <td>📐 Cálculo<br><span>Derivadas e integrales</span></td>
+        <td>⚙️ Logística<br><span>Gestión de almacenes</span></td>
+        <td>🧮 Costos<br><span>Costeo de producción</span></td>
+        <td>📏 Diseño Industrial<br><span>Planos y procesos</span></td>
+      </tr>
+      <tr>
+        <td class="hora">9:00 - 10:00</td>
+        <td>📘 Física<br><span>Mecánica básica</span></td>
+        <td>📊 Simulación<br><span>Modelos de procesos</span></td>
+        <td>📈 Productividad<br><span>Métodos de mejora</span></td>
+        <td>🛠️ Manufactura<br><span>Producción flexible</span></td>
+        <td>🗂️ Ética Profesional<br><span>Responsabilidad laboral</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SISTEMAS -->
+  <div class="seccion">
+    <div class="subtitulo">💻 Ingeniería en Sistemas</div>
+    <table>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+      <tr>
+        <td class="hora">10:00 - 11:00</td>
+        <td>👨‍💻 Programación<br><span>Lenguaje Python</span></td>
+        <td>🗃️ Base de Datos<br><span>SQL y estructuras</span></td>
+        <td>🧠 IA Básica<br><span>Redes neuronales</span></td>
+        <td>🛡️ Seguridad Web<br><span>Protección de sistemas</span></td>
+        <td>🌐 Redes<br><span>Enrutamiento y protocolos</span></td>
+      </tr>
+      <tr>
+        <td class="hora">11:00 - 12:00</td>
+        <td>🧩 Algoritmos<br><span>Estructuras de control</span></td>
+        <td>🖥️ Desarrollo Web<br><span>HTML, CSS y JS</span></td>
+        <td>📱 Apps Móviles<br><span>Interfaz Android</span></td>
+        <td>📡 IoT Básico<br><span>Internet de las cosas</span></td>
+        <td>📝 Proyecto Final<br><span>Presentación final</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- GASTRONOMÍA -->
+  <div class="seccion">
+    <div class="subtitulo">👨‍🍳 Gastronomía</div>
+    <table>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+      <tr>
+        <td class="hora">12:00 - 13:00</td>
+        <td>🥖 Panadería<br><span>Recetas clásicas</span></td>
+        <td>🍰 Pastelería<br><span>Decoración avanzada</span></td>
+        <td>🥗 Nutrición<br><span>Dietas balanceadas</span></td>
+        <td>🌮 Cocina Mexicana<br><span>Sabores tradicionales</span></td>
+        <td>🍽️ Mesa y Servicio<br><span>Protocolo formal</span></td>
+      </tr>
+      <tr>
+        <td class="hora">13:00 - 14:00</td>
+        <td>🍹 Coctelería<br><span>Bebidas clásicas</span></td>
+        <td>🌎 Internacional<br><span>Recetas del mundo</span></td>
+        <td>📊 Costos<br><span>Insumos y utilidad</span></td>
+        <td>🧼 Higiene<br><span>Normas sanitarias</span></td>
+        <td>📚 Cultura Gastronómica<br><span>Historia y evolución</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- TICs -->
+  <div class="seccion">
+    <div class="subtitulo">🖧 Tecnologías de la Información (TICs)</div>
+    <table>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+      <tr>
+        <td class="hora">14:00 - 15:00</td>
+        <td>🧑‍💼 Fundamentos TIC<br><span>Infraestructura básica</span></td>
+        <td>📡 Redes<br><span>Topologías y hardware</span></td>
+        <td>📱 App Development<br><span>Interfaz Flutter</span></td>
+        <td>📊 Gestión TI<br><span>Modelos de negocio</span></td>
+        <td>🔒 Seguridad<br><span>Auditoría digital</span></td>
+      </tr>
+      <tr>
+        <td class="hora">15:00 - 16:00</td>
+        <td>🖼️ Multimedia<br><span>Diseño interactivo</span></td>
+        <td>🌐 Web Design<br><span>Frontend moderno</span></td>
+        <td>🧾 SQL Avanzado<br><span>Procedimientos y vistas</span></td>
+        <td>🧮 Matemáticas Discretas<br><span>Lógica computacional</span></td>
+        <td>📊 Proyecto TIC<br><span>Aplicación empresarial</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- OTROS -->
+  <div class="seccion">
+    <div class="subtitulo">🧩 Área Complementaria</div>
+    <table>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+      <tr>
+        <td class="hora">16:00 - 17:00</td>
+        <td>🌍 Idiomas<br><span>Inglés / Francés</span></td>
+        <td>🧠 Psicología<br><span>Desarrollo personal</span></td>
+        <td>🎨 Arte<br><span>Dibujo y expresión</span></td>
+        <td>💼 Administración<br><span>Gestión escolar</span></td>
+        <td>📒 Contabilidad<br><span>Registros y finanzas</span></td>
+      </tr>
+      <tr>
+        <td class="hora">17:00 - 18:00</td>
+        <td>🏃‍♂️ Deportes<br><span>Entrenamiento físico</span></td>
+        <td>📘 Ética<br><span>Valores profesionales</span></td>
+        <td>💻 Informática<br><span>Ofimática aplicada</span></td>
+        <td>📖 Taller Lectura<br><span>Comprensión textual</span></td>
+        <td>👥 Tutoría<br><span>Seguimiento académico</span></td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>
