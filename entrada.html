@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>tesLife - Nuevo Ingreso</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      animation: fondoCambiante 20s infinite;
+      color: #333;
+    }
+
+    @keyframes fondoCambiante {
+      0%   { background-color: #e8f5e9; }
+      25%  { background-color: #c8e6c9; }
+      50%  { background-color: #a5d6a7; }
+      75%  { background-color: #81c784; }
+      100% { background-color: #e8f5e9; }
+    }
+
+    header {
+      background-color: #1b5e20;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .btns-header button {
+      margin-left: 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .ingresar {
+      background-color: #ffffff;
+      color: #1b5e20;
+    }
+
+    .registrarse {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .hero {
+      background-image: url('principal.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .hero div {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+      font-size: 48px;
+    }
+
+    .secciones {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background-color: white;
+      padding: 40px 20px;
+    }
+
+    .seccion {
+      width: 300px;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .seccion h3 {
+      margin-bottom: 15px;
+      color: #2e7d32;
+    }
+
+    .testimonios {
+      background-color: #f1f8e9;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .testimonios img {
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+      object-fit: cover;
+      margin: 10px;
+    }
+
+    .footer {
+      background-color: #1b5e20;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer p {
+      margin-top: 10px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 80px;
+      background-color: #1b5e20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      animation: sidebarColor 6s infinite;
+      z-index: 999;
+    }
+
+    @keyframes sidebarColor {
+      0%   { background-color: #1b5e20; }
+      33%  { background-color: #777; }
+      66%  { background-color: #fff; }
+      100% { background-color: #1b5e20; }
+    }
+
+    .sidebar-icon {
+      width: 50px;
+      height: 50px;
+      margin: 15px 0;
+      border-radius: 50%;
+      background-color: #ffffff;
+      color: #1b5e20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .sidebar-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .sidebar-text {
+      font-size: 10px;
+      color: #333;
+      text-align: center;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display: flex; align-items: center;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Tuza.png/600px-Tuza.png" alt="Logo tesLife"/>
+    <h1 style="margin-left: 10px;">tesLife</h1>
+  </div>
+  <div class="btns-header">
+    <button class="ingresar" onclick="window.location.href='iniciarseccion.html'">Ingresar al Portal</button>
+    <button class="registrarse" onclick="window.location.href='registro.html'">Registrarse</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div>Bienvenido a tesLife</div>
+</section>
+
+<section class="secciones">
+  <div class="seccion">
+    <h3>Vida Académica</h3>
+    <p>- Horario de clases<br>- Calificaciones<br>- Materias insertadas<br>- Asesorías y tutorías</p>
+  </div>
+  <div class="seccion">
+    <h3>Servicios Digitales</h3>
+    <p>- Biblioteca Virtual<br>- Correo institucional<br>- Sistema de pagos<br>- Solicitudes escolares</p>
+  </div>
+  <div class="seccion">
+    <h3>Comunidad y Noticias</h3>
+    <p>- Eventos recientes<br>- Convocatorias<br>- Charlas y conferencias<br>- Noticias destacadas</p>
+  </div>
+</section>
+
+<section class="testimonios">
+  <h2>Lo que opinan los estudiantes</h2>
+  <div>
+    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Estudiante 1">
+    <p>“tesLife me ayuda a organizar todo mi semestre”</p>
+  </div>
+  <div>
+    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Estudiante 2">
+    <p>“Puedo ver mis materias, tareas y todo en un solo lugar”</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div>
+    <p>📧 contacto@tesoem.edu.mx</p>
+    <p>📞 (55) 1234-5678</p>
+    <p>📍 TESOEM - Estado de México</p>
+  </div>
+  <div>
+    <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">YouTube</a>
+  </div>
+  <p>© TESOEM 2025 - Plataforma tesLife</p>
+</footer>
+
+<!-- BARRA LATERAL -->
+<div class="sidebar">
+  <div class="sidebar-icon" title="Inicio" onclick="window.location.href='entrada.html'">🏠</div>
+  <div class="sidebar-text">Inicio</div>
+
+  <div class="sidebar-icon" title="Perfil" onclick="window.location.href='perfil.html'">👤</div>
+  <div class="sidebar-text">Perfil</div>
+
+  <div class="sidebar-icon" title="Materias" onclick="window.location.href='horaio.html'">📚</div>
+  <div class="sidebar-text">Materias</div>
+
+  <div class="sidebar-icon" title="pagos" onclick="window.location.href='Pagos.html'">💳</div>
+  <div class="sidebar-text">Pagos</div>
+
+  <div class="sidebar-icon" title="Foros" onclick="window.location.href='foro.html'">💬</div>
+  <div class="sidebar-text">Foros</div>
+
+  <div class="sidebar-icon" title="Presentación" onclick="window.location.href='presentacion.html'">🎓</div>
+  <div class="sidebar-text">Presentación</div>
+
+  <div class="sidebar-icon" title="Cerrar sesión" onclick="cerrarSesion()">🚪</div>
+  <div class="sidebar-text">Salir</div>
+</div>
+
+<script>
+  function cerrarSesion() {
+    localStorage.clear();
+    window.location.href = "entrada.html";
+  }
+</script>
+
+</body>
+</html>
+
