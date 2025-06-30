@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tesLife - Inicio de Sesión y Registro</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('gato.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      padding: 40px 20px;
+      text-align: center;
+      backdrop-filter: blur(8px) brightness(1.05);
+      color: white;
+    }
+
+    .logo {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #ffffff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    }
+
+    .title {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+
+    .input, .button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    .input {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #333;
+    }
+
+    .input::placeholder {
+      color: #555;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #388E3C;
+    }
+
+    .link, .switch-section {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .link a, .switch-section a {
+      color: #ffffff;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 15px;
+      }
+
+      .logo {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="login">
+    <h1 class="logo">tesLife</h1>
+    <h2 class="title">Bienvenido a tesLife</h2>
+    <input type="email" class="input" placeholder="Correo electrónico" required>
+    <input type="password" class="input" placeholder="Contraseña" required>
+    <button class="button">Iniciar sesión</button>
+    <div class="link">
+      <a onclick="mostrarRecuperar()">¿Olvidaste tu cuenta?</a>
+    </div>
+    <div class="switch-section">
+      <span>¿No tienes una cuenta?</span> <a onclick="mostrarRegistro()">Regístrate aquí</a>
+    </div>
+  </div>
+
+  <div class="container hidden" id="registro">
+    <h1 class="logo">tesLife</h1>
+    <h2 class="title">Crea una cuenta</h2>
+    <input type="text" class="input" placeholder="Nombre completo" required>
+    <input type="email" class="input" placeholder="Correo electrónico" required>
+    <input type="password" class="input" placeholder="Contraseña" required>
+    <button class="button">Registrarse</button>
+    <div class="switch-section">
+      <span>¿Ya tienes una cuenta?</span> <a onclick="mostrarLogin()">Inicia sesión</a>
+    </div>
+  </div>
+
+  <div class="container hidden" id="recuperar">
+    <h1 class="logo">tesLife</h1>
+    <h2 class="title">🔐 Recuperar Cuenta</h2>
+    <input type="text" class="input" placeholder="Nombre completo" required>
+    <input type="email" class="input" placeholder="Correo electrónico registrado" required>
+    <input type="email" class="input" placeholder="Confirmar correo electrónico" required>
+    <button class="button">Enviar solicitud</button>
+    <div class="switch-section">
+      <a onclick="mostrarLogin()">← Volver al inicio</a>
+    </div>
+  </div>
+
+  <script>
+    function mostrarLogin() {
+      document.getElementById('login').classList.remove('hidden');
+      document.getElementById('registro').classList.add('hidden');
+      document.getElementById('recuperar').classList.add('hidden');
+    }
+
+    function mostrarRegistro() {
+      document.getElementById('login').classList.add('hidden');
+      document.getElementById('registro').classList.remove('hidden');
+      document.getElementById('recuperar').classList.add('hidden');
+    }
+
+    function mostrarRecuperar() {
+      document.getElementById('login').classList.add('hidden');
+      document.getElementById('registro').classList.add('hidden');
+      document.getElementById('recuperar').classList.remove('hidden');
+    }
+
+    window.onload = mostrarLogin;
+  </script>
+
+</body>
+</html>

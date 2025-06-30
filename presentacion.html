@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>tesLife - App TESOEM</title>
+
+  <!-- Fuentes y librerías -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --verde: #28a745;
+      --negro: #0d0d0d;
+      --gris: #1e1e1e;
+      --blanco: #e5e5e5;
+      --terminal-green: #00ff88;
+      --cian: #00d4ff;
+      --rojo: #ff4b4b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Fira Code', monospace;
+      background-color: var(--negro);
+      color: var(--blanco);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      padding: 100px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--verde);
+      animation: pulseGlow 4s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px var(--verde); }
+      50% { box-shadow: 0 0 25px var(--cian); }
+    }
+
+    header h1 {
+      font-size: 4.2rem;
+      color: var(--verde);
+      text-shadow: 0 0 15px var(--verde);
+      letter-spacing: 3px;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      color: #ccc;
+      margin-top: 20px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .terminal {
+      background-color: #121212;
+      border-left: 5px solid var(--terminal-green);
+      padding: 25px;
+      margin: 40px auto;
+      max-width: 850px;
+      font-size: 1rem;
+      color: var(--terminal-green);
+      box-shadow: 0 0 25px rgba(0, 255, 100, 0.5);
+      animation: fadeInTerminal 2s ease;
+      line-height: 1.8;
+    }
+
+    @keyframes fadeInTerminal {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(180deg, #0f0f0f, #1a1a1a);
+    }
+
+    .section h2 {
+      font-size: 3rem;
+      color: var(--verde);
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--verde);
+    }
+
+    .section p, .section ul {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.2rem;
+      color: #ccc;
+      line-height: 1.9;
+    }
+
+    ul.bullets li::before {
+      content: "\f0da ";
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--cian);
+      margin-right: 10px;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 35px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      width: 300px;
+      padding: 30px;
+      border-radius: 14px;
+      text-align: left;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px #111;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.05);
+      border-color: var(--cian);
+      box-shadow: 0 0 25px var(--verde);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      color: var(--verde);
+      margin-bottom: 15px;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      color: #bbb;
+    }
+
+    .mapa iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 250px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    .cta {
+      padding: 70px 20px;
+      text-align: center;
+      background: #101010;
+      border-top: 2px solid var(--verde);
+    }
+
+    .cta h2 {
+      color: var(--cian);
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      text-shadow: 0 0 6px var(--cian);
+    }
+
+    .cta button {
+      background-color: var(--verde);
+      color: var(--negro);
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 12px var(--verde);
+    }
+
+    .cta button:hover {
+      background-color: #1e7e34;
+    }
+
+    footer {
+      background-color: #0a0a0a;
+      color: #666;
+      padding: 30px;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+
+  <header data-aos="zoom-in">
+    <h1>tesLife</h1>
+    <p>Tu ecosistema digital como estudiante del TESOEM: moderno, dinámico, conectado.</p>
+  </header>
+
+  <div class="terminal" data-aos="fade-up">
+    [root@teslife]# Ejecutando entorno seguro...<br>
+    ➤ Estableciendo conexión con TESOEM... OK<br>
+    ➤ Módulos activos: Foros + Asesorías + Calendario + Documentos... OK<br>
+    ➤ Sistema preparado para el aprendizaje inteligente ✅
+  </div>
+
+  <section class="section" data-aos="fade-right">
+    <h2>¿Qué es tesLife?</h2>
+    <p>
+      tesLife es la app oficial y personalizada del TESOEM para estudiantes de nuevo ingreso y avanzados.
+      Ofrece todo lo necesario para tu vida escolar: calendario, asesorías, foros por carrera, noticias, archivos, y más.
+      Conecta con la comunidad, recibe notificaciones, gestiona tu avance y accede desde cualquier dispositivo.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2>Lo que hace especial a tesLife</h2>
+    <ul class="bullets">
+      <li>🎯 Personalización por carrera y semestre.</li>
+      <li>🧠 Acceso inteligente a recursos y asesorías según tu avance.</li>
+      <li>🌐 Conexión directa a profesores y foros estudiantiles.</li>
+      <li>📲 Compatible con Android, iOS y navegadores web.</li>
+      <li>🔐 Seguridad cifrada para tus datos escolares.</li>
+      <li>🧩 Se integra con plataformas como Teams, Moodle y Google Meet.</li>
+    </ul>
+  </section>
+
+  <section class="section" data-aos="zoom-in">
+    <h2>Ubicación TESOEM</h2>
+    <p>Paraje de Isidro S/N, Tecamachalco, 56400 San Isidro, Méx.<br>Tel: 55 5986 3498 | Lunes a Viernes desde 9:00 a.m.</p>
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps?q=Paraje+de+Isidro+S%2FN,+Tecamachalco,+56400+San+Isidro,+M%C3%A9x.&output=embed"></iframe>
+    </div>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2>Módulos principales</h2>
+    <div class="features">
+      <div class="feature-card" data-aos="fade-right">
+        <h3><i class="fas fa-laptop-code"></i> Portal Escolar</h3>
+        <p>Consulta materias, horarios, documentos, calificaciones y historial académico completo.</p>
+      </div>
+      <div class="feature-card" data-aos="zoom-in">
+        <h3><i class="fas fa-comments"></i> Foros por Carrera</h3>
+        <p>Participa en discusiones, resuelve dudas y colabora en proyectos por licenciatura.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-left">
+        <h3><i class="fas fa-bell"></i> Centro de Avisos</h3>
+        <p>Notificaciones escolares automáticas: exámenes, pagos, convocatorias, eventos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" data-aos="flip-left">
+    <h2>¡Empieza con tesLife hoy mismo!</h2>
+    <button onclick="alert('Acceso disponible muy pronto para todos los estudiantes')">Explorar plataforma</button>
+  </section>
+
+  <footer>
+    &copy; 2025 tesLife | Desarrollado por y para estudiantes del TESOEM 🧠 Con tecnología de última generación.
+  </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>

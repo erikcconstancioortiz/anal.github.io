@@ -83,11 +83,15 @@
       <input type="text" id="titulo" placeholder="Título del comentario (Ej. ¿Cómo inscribirme a tutorías?)">
       <textarea id="contenido" placeholder="Escribe tu comentario..."></textarea>
       <select id="carrera">
-        <option value="Industrial">⚙️ Ingeniería Industrial</option>
-        <option value="Sistemas">💻 Ingeniería en Sistemas</option>
-        <option value="TICs">🌐 TICs</option>
+        <option value="Contaduria">📊 Contaduría Pública</option>
         <option value="Gastronomia">🍳 Gastronomía</option>
-        <option value="Otros">📚 Otros</option>
+        <option value="Ambiental">🌿 Ingeniería Ambiental</option>
+        <option value="Industrial">⚙️ Ingeniería Industrial</option>
+        <option value="Administracion">🏢 Ingeniería en Administración</option>
+        <option value="Energias">🔋 Ingeniería en Energías Renovables</option>
+        <option value="Sistemas">💻 Ingeniería en Sistemas Computacionales</option>
+        <option value="TICs">🌐 Ingeniería en TICs</option>
+        <option value="Automotriz">🚗 Ingeniería en Sistemas Automotrices</option>
       </select>
       <button onclick="publicarComentario()">Publicar</button>
     </div>
@@ -132,20 +136,40 @@
       const lista = filtrados || comentarios;
 
       const porCarrera = {
+        'Contaduria': [],
+        'Gastronomia': [],
+        'Ambiental': [],
         'Industrial': [],
+        'Administracion': [],
+        'Energias': [],
         'Sistemas': [],
         'TICs': [],
-        'Gastronomia': [],
-        'Otros': []
+        'Automotriz': []
       };
 
-      lista.forEach(com => porCarrera[com.carrera].push(com));
+      lista.forEach(com => {
+        if (porCarrera[com.carrera]) {
+          porCarrera[com.carrera].push(com);
+        }
+      });
+
+      const nombresCarreras = {
+        'Contaduria': '📊 Contaduría Pública',
+        'Gastronomia': '🍳 Gastronomía',
+        'Ambiental': '🌿 Ingeniería Ambiental',
+        'Industrial': '⚙️ Ingeniería Industrial',
+        'Administracion': '🏢 Ingeniería en Administración',
+        'Energias': '🔋 Ingeniería en Energías Renovables',
+        'Sistemas': '💻 Ingeniería en Sistemas Computacionales',
+        'TICs': '🌐 Ingeniería en TICs',
+        'Automotriz': '🚗 Ingeniería en Sistemas Automotrices'
+      };
 
       for (const carrera in porCarrera) {
         if (porCarrera[carrera].length > 0) {
           const seccion = document.createElement('div');
           seccion.className = 'categoria';
-          seccion.innerHTML = `<h2>${carrera}</h2>`;
+          seccion.innerHTML = `<h2>${nombresCarreras[carrera]}</h2>`;
 
           porCarrera[carrera].forEach(c => {
             const div = document.createElement('div');

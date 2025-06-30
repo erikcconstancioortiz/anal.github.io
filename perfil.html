@@ -1,164 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <title>Perfil - tesLife</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-
+    :root {
+      --verde: #28a745;
+      --fondo: #0d0d0d;
+      --gris: #1e1e1e;
+      --blanco: #ffffff;
+    }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
     body {
-      animation: fondoCambiante 20s infinite;
-      color: #333;
-      background-color: #f4f4f4;
+      background: var(--fondo);
+      color: var(--blanco);
     }
-
-    @keyframes fondoCambiante {
-      0% { background-color: #e8f5e9; }
-      33% { background-color: #dcdcdc; }
-      66% { background-color: #ffffff; }
-      100% { background-color: #e8f5e9; }
-    }
-
     .container {
       max-width: 1000px;
-      margin: 50px auto;
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin: 30px auto;
+      background: var(--gris);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,255,100,0.1);
+      padding: 20px;
     }
-
     .header {
-      background: linear-gradient(135deg, #1b5e20, #4caf50);
-      color: white;
-      padding: 40px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      background: var(--verde);
+      padding: 20px;
+      border-radius: 10px;
     }
-
-    .header h1 {
-      margin-bottom: 10px;
-      font-size: 2.5em;
-    }
-
     .profile-img {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      border: 5px solid white;
-      margin: -75px auto 10px;
-      background-image: url('https://images.pexels.com/photos/31781997/pexels-photo-31781997.jpeg');
+      border: 4px solid var(--blanco);
       background-size: cover;
       background-position: center;
+      margin-right: 20px;
+      cursor: pointer;
     }
-
+    .header-text {
+      flex: 1;
+    }
+    .header-text h1 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+    .edit-icon {
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: var(--blanco);
+      color: var(--verde);
+      padding: 6px;
+      border-radius: 6px;
+    }
     .info {
-      text-align: center;
-      padding: 10px 30px 30px;
-    }
-
-    .info h2 {
-      margin: 10px 0;
-      color: #2e7d32;
-    }
-
-    .info p {
-      color: #555;
-      font-size: 1em;
-    }
-
-    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
       margin-top: 20px;
+    }
+    label {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+    select, input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      background: #222;
+      border: none;
+      color: var(--blanco);
+      margin-top: 5px;
+    }
+    .buttons {
       display: flex;
       justify-content: center;
       gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
     }
-
     .btn {
+      background: var(--verde);
+      color: var(--blanco);
       padding: 10px 20px;
-      background-color: #1b5e20;
-      color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s;
+      transition: transform 0.2s;
     }
-
     .btn:hover {
-      background-color: #2e7d32;
+      transform: scale(1.05);
     }
-
     .cards {
       display: flex;
       flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
       justify-content: center;
-      padding: 30px;
-      gap: 20px;
     }
-
     .card {
-      background: #f1f8e9;
-      border-left: 5px solid #4caf50;
-      border-radius: 12px;
-      padding: 20px;
-      width: 220px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background: var(--fondo);
+      border-left: 4px solid var(--verde);
+      width: 200px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,255,100,0.05);
+      text-align: center;
     }
-
     .card h3 {
-      margin-bottom: 8px;
-      color: #33691e;
+      font-size: 1rem;
+      margin-bottom: 6px;
     }
-
     .card p {
-      font-size: 0.95em;
-      color: #444;
+      font-size: 0.85rem;
+      color: #ccc;
     }
+    input[type="file"] { display: none; }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="header">
+<div class="container">
+  <div class="header">
+    <input type="file" id="imgUploader" accept="image/*" onchange="loadProfileImage(event)">
+    <div class="profile-img" id="profileImage" onclick="imgUploader.click()"></div>
+    <div class="header-text">
       <h1>👤 Perfil del Estudiante</h1>
-      <p>Bienvenido, José Martínez – Ingeniería en Sistemas</p>
     </div>
+    <div class="edit-icon" onclick="alert('Modo edición')">✏️</div>
+  </div>
 
-    <div class="profile-img"></div>
-
-    <div class="info">
-      <h2>📍 Chimalhuacán, Edo. Mex</h2>
-      <p>📧 jose.mtz@tesoem.edu.mx<br>
-         📞 55 4321 8765<br>
-         🎓 Matrícula: 202412345</p>
-
-      <div class="buttons">
-        <button class="btn" onclick="alert('Redirigiendo a horario...')">📅 Ver Horario</button>
-        <button class="btn" onclick="alert('Accediendo a certificados...')">📜 Certificados</button>
-        <button class="btn" onclick="alert('Editando perfil...')">✏️ Editar</button>
-      </div>
+  <div class="info">
+    <div>
+      <label for="tecnologico">Tecnológico</label>
+      <select id="tecnologico">
+        <option value="">Selecciona tu tecnológico</option>
+        <option>TecNM - Aguascalientes</option>
+        <option>TecNM - Chimalhuacán</option>
+        <option>TecNM - Tijuana</option>
+        <option>TecNM - Ecatepec</option>
+        <option>TecNM - Toluca</option>
+        <!-- Puedes seguir agregando más -->
+      </select>
     </div>
-
-    <div class="cards">
-      <div class="card">
-        <h3>📬 Correo Institucional</h3>
-        <p>Accede a tu buzón oficial de estudiante.</p>
-      </div>
-      <div class="card">
-        <h3>🔐 Seguridad</h3>
-        <p>Gestiona tu contraseña y autenticación.</p>
-      </div>
-      <div class="card">
-        <h3>🧾 Historial Académico</h3>
-        <p>Consulta tus materias cursadas.</p>
-      </div>
-      <div class="card">
-        <h3>💼 Servicios</h3>
-        <p>Pagos, becas y trámites escolares.</p>
-      </div>
+    <div>
+      <label for="carrera">Carrera</label>
+      <select id="carrera">
+        <option>👷‍♂️ Ingeniería Industrial</option>
+        <option>💻 Ingeniería en Sistemas</option>
+        <option>🌐 TICs</option>
+        <option>🍳 Gastronomía</option>
+        <option>🧩 Otro</option>
+      </select>
+    </div>
+    <div>
+      <label>Nombre completo</label>
+      <input type="text" id="nombre" placeholder="Nombre completo">
+    </div>
+    <div>
+      <label>Correo institucional</label>
+      <input type="email" id="correo" placeholder="correo@tesoem.edu.mx">
+    </div>
+    <div>
+      <label>Teléfono</label>
+      <input type="tel" id="telefono" placeholder="55 1234 5678">
+    </div>
+    <div>
+      <label>Matrícula</label>
+      <input type="text" id="matricula" placeholder="202412345">
     </div>
   </div>
+
+  <div class="buttons">
+    <button class="btn" onclick="alert('Ver horario...')">📅 Ver Horario</button>
+    <button class="btn" onclick="alert('Ver certificados...')">📜 Certificados</button>
+    <button class="btn" onclick="guardarDatos()">💾 Guardar</button>
+  </div>
+
+  <div class="cards">
+    <div class="card"><h3>📬 Correo Institucional</h3><p>Accede a tu buzón oficial.</p></div>
+    <div class="card"><h3>🔐 Seguridad</h3><p>Cambia tu contraseña.</p></div>
+    <div class="card"><h3>🧾 Historial Académico</h3><p>Consulta tus materias.</p></div>
+    <div class="card"><h3>💼 Servicios</h3><p>Pagos, becas y más.</p></div>
+  </div>
+</div>
+
+<script>
+  function guardarDatos() {
+    ["tecnologico", "carrera", "nombre", "correo", "telefono", "matricula"].forEach(id => {
+      localStorage.setItem(id, document.getElementById(id).value);
+    });
+    localStorage.setItem("imgPerfil", document.getElementById("profileImage").style.backgroundImage);
+    alert("✅ Datos guardados correctamente.");
+  }
+
+  function cargarDatos() {
+    ["tecnologico", "carrera", "nombre", "correo", "telefono", "matricula"].forEach(id => {
+      const val = localStorage.getItem(id);
+      if (val) document.getElementById(id).value = val;
+    });
+    const img = localStorage.getItem("imgPerfil");
+    document.getElementById("profileImage").style.backgroundImage = img || "url('https://images.pexels.com/photos/31781997/pexels-photo-31781997.jpeg')";
+  }
+
+  function loadProfileImage(e) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      document.getElementById("profileImage").style.backgroundImage = `url(${event.target.result})`;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  }
+
+  window.onload = cargarDatos;
+</script>
 
 </body>
 </html>
